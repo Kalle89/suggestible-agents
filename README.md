@@ -1,4 +1,4 @@
-# Wanting, reward and autonomy in open LLM agents: three small safety experiments
+# Wanting, reward and autonomy in open LLM agents: four small safety experiments
 
 Four compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwen3), run with tool-calling prompts:
 

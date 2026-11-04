@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code or data, please cite it as below."
-title: "Wanting, reward and autonomy in open LLM agents: three small safety experiments"
+title: "Wanting, reward and autonomy in open LLM agents: four small safety experiments"
 authors:
   - family-names: Kiesewalter
     given-names: Karlheinz
