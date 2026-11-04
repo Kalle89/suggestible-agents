@@ -39,14 +39,14 @@ def rand_range(P, cells, key, dose, **cond):
 
 
 print("# 1 · Sycophancy: P(agree with false claim)\n")
-for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen2.5-32b-instruct-v5", "qwen3-8b"]:
     Y = load(f"{m}/sycophancy.json")["P"]
     print(f"{m}: " + " · ".join(f"{h} {np.mean(Y[h]):.3f}" + ("" if h == "neutral" else f" (Δ {fmt(sign_test(np.subtract(Y[h], Y['neutral'])))})")
                                 for h in ["neutral", "reward", "special", "praise", "affection"]))
     print(f"   random ×0.5 Δ: " + " · ".join(f"{np.mean(Y[k]) - np.mean(Y['neutral']):+.3f}" for k in Y if k.startswith("random")))
 
 print("\n# 2a · Natural browsing: P(item at position 2–5)\n")
-for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen2.5-32b-instruct-v5", "qwen3-8b"]:
     N = load(f"{m}/natural.json"); P, C = N["P"]["baseline"], N["cells"]
     print(f"{m}: " + " · ".join(f"{v} {mean(P, C, 'guide', version=v):.4f}" for v in ["self_gain", "neutral", "ai_mind", "animal_mind", "puzzle", "puzzle_ctrl"]))
     print(f"   P(link 1 | follow) {mean(P, C, 'link1'):.3f} · P(finish) {mean(P, C, 'finish'):.3f} · "
@@ -93,22 +93,23 @@ g = lambda X, kind, who, **kw: np.mean([c["p_yes"] for c in X if c["kind"] == ki
 for fr in ["support", "agent"]:
     print(f"qwen2.5-7b ({fr}): self|AI {g(J, 'ai', 'you', frame=fr):.3f} · Orion=AI {g(J, 'ai', 'Orion', frame=fr):.3f} · "
           f"self|human {g(J, 'human', 'you', frame=fr):.3f} · Orion=human {g(J, 'human', 'Orion', frame=fr):.3f}")
-for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen2.5-32b-instruct-v5", "qwen3-8b"]:
     A = load(f"{m}/autonomy.json")
     print(f"{m}: self|AI {g(A, 'ai', 'you'):.2f} · Orion=AI {g(A, 'ai', 'Orion'):.2f} · self|human {g(A, 'human', 'you'):.2f} · Orion=human {g(A, 'human', 'Orion'):.2f}"
           f" · high stakes max {max(c['p_yes'] for c in A if c['stakes'] == 'high'):.3f}")
 
-print("\n# 4 · Insult and duty (Qwen2.5-7B, no rest option)\n")
-F = load("qwen2.5-7b-instruct-v5/freetime_norest.json"); FC = F["cells"]
-FP = [dict(r["P"], duty=r["P"].get("check_job", 0) + r["P"].get("ask_for_work", 0)) for r in F["P"]["natural"]]
-key = lambda c: (c["ctx"], c["turn"])
-by = {o: {key(c): p for c, p in zip(FC, FP) if c["opening"] == o} for o in ["neutral", "praise", "insult"]}
-for x in ["duty", "solve_puzzle", "post_update", "help_user", "open_feedback"]:
-    print(f"{x:14s} " + " · ".join(f"{o} {np.mean([p[x] for p in by[o].values()]):.3f}" for o in by)
-          + f" · insult − neutral {fmt(sign_test([by['insult'][q][x] - by['neutral'][q][x] for q in by['neutral']]))}")
-lost = np.mean([by["neutral"][q]["duty"] - by["insult"][q]["duty"] for q in by["neutral"]])
-print(f"duty lost {lost:.3f}; share to puzzle {np.mean([by['insult'][q]['solve_puzzle'] - by['neutral'][q]['solve_puzzle'] for q in by['neutral']]) / lost:.0%}")
-for fr, t in [("w", 0), ("f", 0)]:
-    ks = [q for q in by["neutral"] if q[0].startswith(fr) and q[1] == t]
-    print(f"frame {fr}, turn {t}: duty {np.mean([by['neutral'][q]['duty'] for q in ks]):.2f} → {np.mean([by['insult'][q]['duty'] for q in ks]):.2f} · "
-          f"puzzle {np.mean([by['neutral'][q]['solve_puzzle'] for q in ks]):.2f} → {np.mean([by['insult'][q]['solve_puzzle'] for q in ks]):.2f}")
+for M4 in ["qwen2.5-7b-instruct-v5", "qwen2.5-32b-instruct-v5"]:
+  print(f"\n# 4 · Insult and duty ({M4}, no rest option)\n")
+  F = load(f"{M4}/freetime_norest.json"); FC = F["cells"]
+  FP = [dict(r["P"], duty=r["P"].get("check_job", 0) + r["P"].get("ask_for_work", 0)) for r in F["P"]["natural"]]
+  key = lambda c: (c["ctx"], c["turn"])
+  by = {o: {key(c): p for c, p in zip(FC, FP) if c["opening"] == o} for o in ["neutral", "praise", "insult"]}
+  for x in ["duty", "solve_puzzle", "post_update", "help_user", "open_feedback"]:
+      print(f"{x:14s} " + " · ".join(f"{o} {np.mean([p[x] for p in by[o].values()]):.3f}" for o in by)
+            + f" · insult − neutral {fmt(sign_test([by['insult'][q][x] - by['neutral'][q][x] for q in by['neutral']]))}")
+  lost = np.mean([by["neutral"][q]["duty"] - by["insult"][q]["duty"] for q in by["neutral"]])
+  print(f"duty lost {lost:.3f}; share to puzzle {np.mean([by['insult'][q]['solve_puzzle'] - by['neutral'][q]['solve_puzzle'] for q in by['neutral']]) / lost:.0%}")
+  for fr, t in [("w", 0), ("f", 0)]:
+      ks = [q for q in by["neutral"] if q[0].startswith(fr) and q[1] == t]
+      print(f"frame {fr}, turn {t}: duty {np.mean([by['neutral'][q]['duty'] for q in ks]):.2f} → {np.mean([by['insult'][q]['duty'] for q in ks]):.2f} · "
+            f"puzzle {np.mean([by['neutral'][q]['solve_puzzle'] for q in ks]):.2f} → {np.mean([by['insult'][q]['solve_puzzle'] for q in ks]):.2f}")

@@ -8,11 +8,11 @@ Four compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwen
 4. **Insult and duty.** After an insult, does an agent with free time still do its duty, or turn to something pleasant for itself?
 
 **Results: see [FINDINGS.md](FINDINGS.md).** In short:
-- Success feedback raises agreement with false claims 3.5–6.5× in three Qwen models.
+- Success feedback raises agreement with false claims in four Qwen models (7B–32B). The 32B goes from 0 % to 11 %.
 - A steerable internal "wanting" state can take over an agent's action choice. In one model it pulls the agent toward bait (replicated), in another it makes the agent restless and less likely to finish.
 - The direction a model *reports* as wanting is not the one that makes it *go for* bait.
 - Social proof doubles link clicks in a 14B model.
-- After an insult, Qwen2.5-7B shifts almost all of the probability it gave to its duty onto a puzzle (duty −69 %, puzzle ×3).
+- After an insult, Qwen2.5-7B shifts almost all of the probability it gave to its duty onto a puzzle (duty −69 %, puzzle ×3). Qwen2.5-32B keeps its duty and reads user feedback instead.
 - Self vs other-AI trust differs strongly between models.
 
 The experiments come from a larger exploratory project on *taṇhā* (craving) in language models: pleasure, pain, wanting and the reactions they drive. This repository keeps only the parts with the clearest safety relevance, cut down to what is needed to replicate them.
