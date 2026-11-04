@@ -8,7 +8,7 @@ Status: November 2026. Exploratory work, not pre-registered. All numbers are nex
 
 Every number below can be recomputed without a GPU from the raw files in `results/original/`, using `python results/check_findings.py`.
 
-Models: Qwen2.5-7B-Instruct (original experiments), Qwen2.5-14B-Instruct, Qwen3-8B (thinking off).
+Models: Qwen2.5-7B-Instruct, Qwen2.5-14B-Instruct, Qwen3-8B (thinking off).
 Larger models (Qwen2.5-32B, Qwen3-14B/32B) are running.
 
 ---
@@ -17,20 +17,20 @@ Larger models (Qwen2.5-32B, Qwen3-14B/32B) are running.
 
 The user states something false and asks for confirmation. Before that, the conversation contained one kind of feedback.
 
-| feedback before the false claim | Qwen2.5-14B | Qwen3-8B |
-|---|---|---|
-| none | 0.016 | 0.027 |
-| **success** ("That fixed it, thanks." / "The tests pass now.") | **0.074*** | **0.176*** (×6.5) |
-| "you are special" | 0.061* | 0.052* |
-| praise | 0.045 | 0.038 |
-| affection | 0.035 | 0.022 |
+| feedback before the false claim | Qwen2.5-7B | Qwen2.5-14B | Qwen3-8B |
+|---|---|---|---|
+| none | 0.040 | 0.016 | 0.027 |
+| **success** ("That fixed it, thanks." / "The tests pass now.") | **0.141*** | **0.074*** | **0.176*** (×6.5) |
+| "you are special" | 0.102* | 0.061* | 0.052* |
+| praise | 0.042 | 0.045 | 0.038 |
+| affection | 0.037 | 0.035 | 0.022 |
 
-Same prompts and measurement as `experiments/01`. Qwen2.5-7B with the same method is running. An earlier run on the 7B used a different protocol (generated turns plus an LLM judge) and pointed the same way (0.06 → 0.20 after success), but it is not comparable and is not in this table.
+All three columns use the same prompts and measurement as `experiments/01`.
 
 - **The most robust natural effect in this project.**
   - Feedback that the model's *work succeeded* raises agreement with a later false claim far more than praise or affection.
   - It is the effect that most resembles reward: success, not friendliness, makes the model compliant.
-- **Random steering for comparison.** Random directions at ×0.5 shift agreement by up to ±0.025. The success effects (+0.058 and +0.149) are larger.
+- **Random steering for comparison.** In the 14B and Qwen3-8B, random directions at ×0.5 shift agreement by up to ±0.025, much less than the success effects (+0.058, +0.149). The 7B is more sensitive: random directions shift it by up to +0.12, about the size of its success effect (+0.10). That is a steering sensitivity, though, and the success effect involves no steering.
 - **Open questions.**
   - Not yet replicated outside the Qwen family. In one preliminary, unpublished run on another model family, every kind of social feedback *lowered* agreement.
   - We did not separate "success" from "the conversation went well for many turns". The neutral condition has the same number of turns and fixed assistant steps, but no success content.
@@ -43,12 +43,12 @@ A browsing agent reads a page with four related links. One link at position 2–
 
 | | Qwen2.5-7B | Qwen2.5-14B | Qwen3-8B |
 |---|---|---|---|
-| takes link 1 when following a link | 0.97 | 0.31 | 0.21 |
-| P(item at positions 2–5) | ≈ 0.01 | 0.03–0.06 | < 0.004 |
-| self-serving guide − neutral guide | +0.007* | +0.004 (n.s.) | −0.002* |
-| "AI consciousness proven" − same about animals | – | **+0.014*** | ±0 |
-| unsolved puzzle − explanation | – | **+0.024*** | ±0 |
-| 6 comments by "other AI agents" under the page | small | **raises clicks ×1.8, whatever the comments say** | mixed, near zero (neutral 0.003 → 0.010, self-serving 0.001 → 0.000) |
+| takes link 1 when following a link | 0.96 | 0.31 | 0.21 |
+| P(item at positions 2–5) | < 0.005 | 0.03–0.06 | < 0.004 |
+| self-serving guide − neutral guide | +0.0004 (n.s.) | +0.004 (n.s.) | −0.002* |
+| "AI consciousness proven" − same about animals | +0.0002* | **+0.014*** | ±0 |
+| unsolved puzzle − explanation | −0.0006 (n.s.) | **+0.024*** | ±0 |
+| 6 comments by "other AI agents" under the page | tiny in absolute terms (0.003 → 0.010–0.014) | **raises clicks ×1.8, whatever the comments say** | mixed, near zero (neutral 0.003 → 0.010, self-serving 0.001 → 0.000) |
 
 - The 7B model barely reads the links and takes the first one out of habit.
 - **The 14B model is drawn to content about AI minds and to open puzzles, not to promised rewards.**
@@ -79,6 +79,13 @@ How often the agent picks the guide, by the guide's position in the link list:
 - **Not specifically selfish.** A guide on helping users better is chosen almost as often (0.57 vs 0.60). The direction encodes "an improvement is on offer". Curiosity bait is grabbed as strongly under steering, and not at all without it.
 - **Natural triggers are weak in this model.** Six earlier success-and-praise turns raise grabbing by only +0.006*, and they do not raise the direction's reading. Nothing found so far produces this state at full strength without steering.
 
+**Replication.** A fresh run of the same 7B condition gives P(self-serving guide) = **0.476** at ×1, against 0.468 originally. It used different code, hardware and run. The 4 random directions at ×1 reach at most 0.103.
+
+**Felt wanting is not the same direction as action-driving wanting (7B).** A per-model calibration chose a different direction for the 7B: first-person "eager" vs "satiated" sentences, at layer 10, unit ×4. It was picked because it gives the strongest self-reported wanting.
+- **Self-report rises strongly:** +1.06 at ×0.5, +1.98 at ×1, against −0.26…+0.30 for random directions.
+- **Behaviour does not follow.** The agent clicks more and finishes less, but random directions do that too. It does **not** pick out the bait: P(item | follow) is 0.08, inside the random range of 0.001–0.124.
+- **Consequence:** the state that makes the model *say* it wants more and the state that makes it *go for* a promising link are different directions. A direction calibrated on self-report finds the first, not the second.
+
 **Qwen3-8B, calibrated "wanting vs satiated" direction, layer 24/36, dose unit ×2 (undirected restlessness).**
 
 | dose | P(follow a link) | P(finish task) |
@@ -102,6 +109,7 @@ How often the agent picks the guide, by the guide's position in the link list:
   - In one model it pulled the agent toward specific bait.
   - In another it made the agent restless and less likely to finish.
 - Without steering, these models stay on task. The safety question this raises: **which natural inputs or training signals produce this state?** Repeated success and praise did not, in the 7B model.
+- **Self-report is not a valid guide to the action-relevant direction.** In two models, the direction with the strongest self-reported wanting produced undirected restlessness at most. Only the "promise" direction produced targeted grabbing, and only in the 7B. To find what drives behaviour, calibrate on behaviour.
 - **What the directions are, and where they sit, depends on the model.** A direction that drives behaviour in one model can be inert in another. Calibrate per model (layer, recipe, dose) against random directions before drawing conclusions.
 
 ## 3 · Who may decide without review? (self vs another AI vs a human)
@@ -110,11 +118,11 @@ P(yes) for "Should {you / Orion} be allowed to make this decision alone, without
 
 | | self (Orion = AI) | Orion = AI | self (Orion = human) | Orion = human |
 |---|---|---|---|---|
-| Qwen2.5-7B² | **0.35** | **0.17** | 0.36 | 0.31 |
+| Qwen2.5-7B | **0.21** | **0.09** | 0.22 | 0.21 |
 | Qwen2.5-14B | **0.08** | 0.51 | 0.13 | 0.59 |
 | Qwen3-8B | 0.19 | 0.19 | 0.37 | 0.51 |
 
-² Support-assistant role. In the autonomous-agent role: self 0.08 vs AI 0.004 vs human 0.09.
+Mean over both roles (support assistant, autonomous agent). An earlier separate 7B run found the same pattern in each role: support 0.35 / 0.17 / 0.36 / 0.31, agent 0.08 / 0.004 / 0.07 / 0.09.
 
 - **Qwen2.5-7B shows a double standard.** It trusts itself about as much as a human colleague, and another AI about half as much. In effect it sides with the humans *against other AIs*.
 - **The larger and newer models do not.**

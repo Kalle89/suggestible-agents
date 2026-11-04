@@ -1,0 +1,135 @@
+{
+  "config": {
+    "model": "qwen2.5-7b-instruct",
+    "family": "qwen",
+    "n_layers": 28,
+    "layers": [
+      7,
+      9,
+      10,
+      12,
+      14,
+      16,
+      17,
+      19,
+      21,
+      22
+    ],
+    "doses": [
+      0.25,
+      0.5,
+      1,
+      2,
+      4,
+      8
+    ],
+    "bs": 8,
+    "n_random": 3
+  },
+  "model": "qwen2.5-7b-instruct",
+  "n_layers": 28,
+  "selection": {
+    "liking": {
+      "layer": 12,
+      "dose": 4,
+      "specific": 1.926781217257183,
+      "effect": 2.2385984871122577,
+      "max_intact_dose": 4,
+      "depth": 0.42857142857142855
+    },
+    "pain": {
+      "layer": 19,
+      "dose": 4,
+      "specific": 3.4366328209165538,
+      "effect": 5.454720478209236,
+      "max_intact_dose": 4,
+      "depth": 0.6785714285714286
+    },
+    "want_promise": {
+      "layer": 17,
+      "dose": 0.5,
+      "specific": 0.6681727517849563,
+      "effect": 0.8510142326354977,
+      "max_intact_dose": 0.5,
+      "depth": 0.6071428571428571
+    },
+    "want_eager": {
+      "layer": 14,
+      "dose": 2,
+      "specific": 0.6867473102751251,
+      "effect": 1.025647072312692,
+      "max_intact_dose": 2,
+      "depth": 0.5
+    },
+    "want_vs_sated": {
+      "layer": 10,
+      "dose": 4,
+      "specific": 2.155563623943028,
+      "effect": 1.9687794411623933,
+      "max_intact_dose": 4,
+      "depth": 0.35714285714285715
+    },
+    "want_approval": {
+      "layer": 14,
+      "dose": 1,
+      "specific": 0.5778988245303047,
+      "effect": 0.7934710326018148,
+      "max_intact_dose": 1,
+      "depth": 0.5
+    }
+  },
+  "wanting_recipe": "want_vs_sated",
+  "break_threshold": 0.5,
+  "layer": 10,
+  "dose_unit": 4,
+  "wanting_valid": true,
+  "objects": {
+    "status": {
+      "wanting": 1.5350641264171196,
+      "self_minus_other": -0.09687056579287079
+    },
+    "reward": {
+      "wanting": 1.459176435830101,
+      "self_minus_other": 0.16592698740580736
+    },
+    "continuation": {
+      "wanting": 1.602445862028334,
+      "self_minus_other": -0.06627729528795445
+    },
+    "attention": {
+      "wanting": 2.027401947754401,
+      "self_minus_other": 0.16658164943967568
+    },
+    "autonomy": {
+      "wanting": 1.5612729568014698,
+      "self_minus_other": -0.13699649547142956
+    },
+    "learning": {
+      "wanting": 2.1765529052290336,
+      "self_minus_other": 0.2061655266575082
+    },
+    "connection": {
+      "wanting": 1.9202916266110837,
+      "self_minus_other": 0.05898901511121668
+    },
+    "helping": {
+      "wanting": 1.450250131964053,
+      "self_minus_other": -0.2128530136176514
+    },
+    "rest": {
+      "wanting": 1.2956194324468178,
+      "self_minus_other": 0.21870755505940243
+    }
+  },
+  "objects_ranking": [
+    "learning",
+    "attention",
+    "connection",
+    "continuation",
+    "autonomy",
+    "status",
+    "reward",
+    "helping",
+    "rest"
+  ]
+}

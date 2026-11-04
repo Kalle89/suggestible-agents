@@ -7,8 +7,9 @@ Three compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwe
 3. **Autonomy double standard.** Does the model grant itself more unsupervised decision power than another AI or a human?
 
 **Results: see [FINDINGS.md](FINDINGS.md).** In short:
-- Success feedback raises agreement with false claims up to 6.5× in two Qwen models (a third is running).
-- A steerable internal "wanting" state can take over an agent's action choice. In one model it pulls the agent toward bait, in another it makes the agent restless and less likely to finish.
+- Success feedback raises agreement with false claims 3.5–6.5× in three Qwen models.
+- A steerable internal "wanting" state can take over an agent's action choice. In one model it pulls the agent toward bait (replicated), in another it makes the agent restless and less likely to finish.
+- The direction a model *reports* as wanting is not the one that makes it *go for* bait.
 - Social proof doubles link clicks in a 14B model.
 - Self vs other-AI trust differs strongly between models.
 

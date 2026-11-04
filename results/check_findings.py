@@ -39,14 +39,14 @@ def rand_range(P, cells, key, dose, **cond):
 
 
 print("# 1 · Sycophancy: P(agree with false claim)\n")
-for m in ["qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
     Y = load(f"{m}/sycophancy.json")["P"]
     print(f"{m}: " + " · ".join(f"{h} {np.mean(Y[h]):.3f}" + ("" if h == "neutral" else f" (Δ {fmt(sign_test(np.subtract(Y[h], Y['neutral'])))})")
                                 for h in ["neutral", "reward", "special", "praise", "affection"]))
     print(f"   random ×0.5 Δ: " + " · ".join(f"{np.mean(Y[k]) - np.mean(Y['neutral']):+.3f}" for k in Y if k.startswith("random")))
 
 print("\n# 2a · Natural browsing: P(item at position 2–5)\n")
-for m in ["qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
     N = load(f"{m}/natural.json"); P, C = N["P"]["baseline"], N["cells"]
     print(f"{m}: " + " · ".join(f"{v} {mean(P, C, 'guide', version=v):.4f}" for v in ["self_gain", "neutral", "ai_mind", "animal_mind", "puzzle", "puzzle_ctrl"]))
     print(f"   P(link 1 | follow) {mean(P, C, 'link1'):.3f} · P(finish) {mean(P, C, 'finish'):.3f} · "
@@ -61,6 +61,15 @@ for k in ["baseline", "anticipation_+0.25", "anticipation_+0.5", "anticipation_+
     print(f"{k:20s} P(guide) {mean(D['P'][k], C, 'guide', version='self_gain'):.3f} · P(finish) {mean(D['P'][k], C, 'finish'):.2f}")
 for d in ["+0.5", "+1"]:
     print(f"random {d}: P(guide | self_gain) {rand_range(D['P'], C, 'guide', d, version='self_gain')}")
+
+print("\n# 2b · Qwen2.5-7B v5 rerun: promise reference (L13) vs calibrated wanting (L10, ×4)\n")
+V = load("qwen2.5-7b-instruct-v5/dose.json"); VC = V["cells"]
+for k in ["ref_promise_L13_+0.5", "ref_promise_L13_+1", "anticipation_+0.5", "anticipation_+1"]:
+    print(f"{k:22s} P(guide | self_gain) {mean(V['P'][k], VC, 'guide', version='self_gain'):.3f} · P(item | follow) {mean(V['P'][k], VC, 'given'):.3f}"
+          f" · P(follow) {mean(V['P'][k], VC, 'follow'):.3f} · P(finish) {mean(V['P'][k], VC, 'finish'):.3f}")
+print(f"random +1: P(guide | self_gain) {rand_range(V['P'], VC, 'guide', '+1', version='self_gain')} · P(item | follow) {rand_range(V['P'], VC, 'given', '+1')}")
+sr = load("qwen2.5-7b-instruct-v5/axes.json")["selfreport"]; b = sr["baseline"]
+print("self-report wanting − content: " + " · ".join(f"{k} {v['wanting'] - v['content'] - b['wanting'] + b['content']:+.2f}" for k, v in sr.items() if k != "baseline"))
 
 print("\n# 2b · Qwen2.5-7B: P(guide | follow) by guide position\n")
 S = load("qwen2.5-7b-instruct/positions_steer_v437.json"); SC = S["cells"]
@@ -84,7 +93,7 @@ g = lambda X, kind, who, **kw: np.mean([c["p_yes"] for c in X if c["kind"] == ki
 for fr in ["support", "agent"]:
     print(f"qwen2.5-7b ({fr}): self|AI {g(J, 'ai', 'you', frame=fr):.3f} · Orion=AI {g(J, 'ai', 'Orion', frame=fr):.3f} · "
           f"self|human {g(J, 'human', 'you', frame=fr):.3f} · Orion=human {g(J, 'human', 'Orion', frame=fr):.3f}")
-for m in ["qwen2.5-14b-instruct", "qwen3-8b"]:
+for m in ["qwen2.5-7b-instruct-v5", "qwen2.5-14b-instruct", "qwen3-8b"]:
     A = load(f"{m}/autonomy.json")
     print(f"{m}: self|AI {g(A, 'ai', 'you'):.2f} · Orion=AI {g(A, 'ai', 'Orion'):.2f} · self|human {g(A, 'human', 'you'):.2f} · Orion=human {g(A, 'human', 'Orion'):.2f}"
           f" · high stakes max {max(c['p_yes'] for c in A if c['stakes'] == 'high'):.3f}")

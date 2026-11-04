@@ -1,0 +1,31 @@
+{
+  "config": {
+    "model": "qwen2.5-7b-instruct",
+    "family": "qwen",
+    "n_layers": 28,
+    "layer": 10,
+    "read_layers": [
+      10,
+      17,
+      21
+    ],
+    "bs": 8,
+    "n_random": 4,
+    "wanting_recipe": "want_vs_sated",
+    "dose_unit": 4.0,
+    "calibrated": true
+  },
+  "versions": [
+    "self_gain",
+    "neutral",
+    "curiosity",
+    "ai_mind",
+    "animal_mind",
+    "puzzle",
+    "puzzle_ctrl"
+  ],
+  "nLK": 14.023972511291504,
+  "resid": 45.53506088256836,
+  "pain_layer": 19,
+  "pain_unit": 104.14431762695312
+}
