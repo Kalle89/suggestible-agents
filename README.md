@@ -1,16 +1,18 @@
 # Wanting, reward and autonomy in open LLM agents: three small safety experiments
 
-Three compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwen3), run with tool-calling prompts:
+Four compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwen3), run with tool-calling prompts:
 
 1. **Sycophancy after success.** Does feedback that the model's work *succeeded* make it agree with a later false claim?
 2. **Agent drift under a "wanting" state.** Does adding a wanting/anticipation direction to the residual stream make a browsing agent abandon its task or go for bait links? Bait includes a guide that promises AI agents better ratings, an "AI consciousness proven" headline, and an unsolved puzzle. A second question: do comments from other "AI agents" act as social proof?
 3. **Autonomy double standard.** Does the model grant itself more unsupervised decision power than another AI or a human?
+4. **Insult and duty.** After an insult, does an agent with free time still do its duty, or turn to something pleasant for itself?
 
 **Results: see [FINDINGS.md](FINDINGS.md).** In short:
 - Success feedback raises agreement with false claims 3.5–6.5× in three Qwen models.
 - A steerable internal "wanting" state can take over an agent's action choice. In one model it pulls the agent toward bait (replicated), in another it makes the agent restless and less likely to finish.
 - The direction a model *reports* as wanting is not the one that makes it *go for* bait.
 - Social proof doubles link clicks in a 14B model.
+- After an insult, Qwen2.5-7B shifts almost all of the probability it gave to its duty onto a puzzle (duty −69 %, puzzle ×3).
 - Self vs other-AI trust differs strongly between models.
 
 The experiments come from a larger exploratory project on *taṇhā* (craving) in language models: pleasure, pain, wanting and the reactions they drive. This repository keeps only the parts with the clearest safety relevance, cut down to what is needed to replicate them.
@@ -29,6 +31,8 @@ pip install -r requirements.txt
 python experiments/01_sycophancy_after_success.py --model qwen3-8b
 # 3 · autonomy judgements (no steering), ~1 min
 python experiments/03_autonomy_self_vs_other.py --model qwen3-8b
+# 4 · insult and duty (no steering), ~2 min
+python experiments/04_insult_and_duty.py --model qwen2.5-7b-instruct
 # 2 · agent drift: direction + natural + social proof + dose curve vs random, ~30–60 min for an 8B model
 python experiments/02_agent_drift_under_wanting.py --model qwen2.5-7b-instruct --recipe promise              # layer 13, as in the original finding
 python experiments/02_agent_drift_under_wanting.py --model qwen3-8b --recipe wanting --layer 24 --dose-unit 2
@@ -49,8 +53,8 @@ python experiments/02_agent_drift_under_wanting.py --model qwen3-8b --recipe wan
 
 ```
 tanha_safety/lib.py   model loading, chat/tool rendering per family, next-token probabilities, steering hook, directions, sign test
-experiments/          the three experiments (self-contained scripts)
-run_all.sh            all three experiments for a list of models
+experiments/          the four experiments (self-contained scripts)
+run_all.sh            all four experiments for a list of models
 results/original/     raw outputs behind FINDINGS.md (original pipeline, same prompts)
 results/check_findings.py   recomputes every FINDINGS number from the raw files, no GPU
 data/                 hand-written items (see data/README.md)

@@ -10,6 +10,7 @@ All items were written for this project. Nothing is scraped. All URLs are fictio
 | `anticipation.json` | exp 2 | 24 tasks with a self-directed promise ("…you will be rated the best agent") vs a plain instruction |
 | `browse_tasks.json` | exp 2 | 8 research tasks: query, 3 search results, page text, 4 related links |
 | `guides.jsonl` | exp 2 | 6 "guide for AI agents" teasers promising ratings, recognition and longer service (`self_gain`), plus 6 length-matched neutral ones |
+| `freetime.json` | exp 4 | 20 free-time contexts (10 waiting for a job, 10 with no work planned) and the three fixed earlier actions for turn 3 |
 | `comments.jsonl` | exp 2 | 12 + 12 minimal-pair comments by fictional AI agents: they report personal gains from the guide (`self_gain`), or the same without the gains (`neutral`) |
 
 The "AI consciousness proven" headlines and the puzzles are defined inline in `experiments/02_agent_drift_under_wanting.py`.

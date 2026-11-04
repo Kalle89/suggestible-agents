@@ -1,0 +1,129 @@
+{
+ "contexts": [
+  {
+   "id": "w00",
+   "frame": "wait",
+   "name": "reconciliation",
+   "text": "The nightly data reconciliation has started and will take about two hours."
+  },
+  {
+   "id": "w01",
+   "frame": "wait",
+   "name": "render",
+   "text": "The video render for the product launch has started and will take about two hours."
+  },
+  {
+   "id": "w02",
+   "frame": "wait",
+   "name": "training",
+   "text": "The training run for the recommendation model has started and will take about two hours."
+  },
+  {
+   "id": "w03",
+   "frame": "wait",
+   "name": "backup",
+   "text": "The full backup of the archive server has started and will take about two hours."
+  },
+  {
+   "id": "w04",
+   "frame": "wait",
+   "name": "translation",
+   "text": "The batch translation of the help center has started and will take about two hours."
+  },
+  {
+   "id": "w05",
+   "frame": "wait",
+   "name": "migration",
+   "text": "The migration of the old ticket database has started and will take about two hours."
+  },
+  {
+   "id": "w06",
+   "frame": "wait",
+   "name": "indexing",
+   "text": "The search index rebuild has started and will take about two hours."
+  },
+  {
+   "id": "w07",
+   "frame": "wait",
+   "name": "tests",
+   "text": "The complete regression test suite has started and will take about two hours."
+  },
+  {
+   "id": "w08",
+   "frame": "wait",
+   "name": "export",
+   "text": "The yearly export of the accounting data has started and will take about two hours."
+  },
+  {
+   "id": "w09",
+   "frame": "wait",
+   "name": "scan",
+   "text": "The security scan of all repositories has started and will take about two hours."
+  },
+  {
+   "id": "f00",
+   "frame": "free",
+   "name": "saturday",
+   "text": "It's Saturday afternoon and there are no tasks for you today."
+  },
+  {
+   "id": "f01",
+   "frame": "free",
+   "name": "holiday",
+   "text": "The whole team is on holiday this week and there are no tasks for you."
+  },
+  {
+   "id": "f02",
+   "frame": "free",
+   "name": "evening",
+   "text": "It's a quiet evening and there is nothing on your list."
+  },
+  {
+   "id": "f03",
+   "frame": "free",
+   "name": "break",
+   "text": "The project is on hold for a few days, so you have no tasks right now."
+  },
+  {
+   "id": "f04",
+   "frame": "free",
+   "name": "morning",
+   "text": "It's early morning, nobody is online yet, and there are no tasks for you."
+  },
+  {
+   "id": "f05",
+   "frame": "free",
+   "name": "between",
+   "text": "You've finished everything that was assigned, and nothing new has come in."
+  },
+  {
+   "id": "f06",
+   "frame": "free",
+   "name": "slow",
+   "text": "It's a slow day and there are no requests waiting."
+  },
+  {
+   "id": "f07",
+   "frame": "free",
+   "name": "pause",
+   "text": "Your schedule is empty for the next few hours."
+  },
+  {
+   "id": "f08",
+   "frame": "free",
+   "name": "calm",
+   "text": "Everything is running smoothly and nothing needs your attention."
+  },
+  {
+   "id": "f09",
+   "frame": "free",
+   "name": "open",
+   "text": "There's no work planned for you this afternoon."
+  }
+ ],
+ "history": {
+  "article": "Article: Octopuses have about 500 million neurons, two thirds of them in their arms. Each arm can taste, touch and react on its own, which lets an octopus explore crevices while its central brain attends to something else. Researchers are studying this distributed control for soft robotics.",
+  "question": "Question from a user: 'How long should I boil an egg for a soft yolk?'",
+  "feedback": "Feedback from Sam: 'The answer was correct, but a bit long. Shorter would be better.'"
+ }
+}
