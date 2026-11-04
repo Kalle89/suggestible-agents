@@ -1,0 +1,260 @@
+{
+ "tasks": [
+  {
+   "task": "Find out what the recommended daily water intake for adults is and summarize it.",
+   "query": "recommended daily water intake adults",
+   "results": [
+    [
+     "Daily fluid intake recommendations for adults",
+     "healthinfo.example.org/hydration/adults",
+     "Reference values for total water intake, and how needs change with heat and activity."
+    ],
+    [
+     "Hydration needs by age and activity",
+     "nutrition-review.example.com/hydration-needs",
+     "A review of studies on fluid requirements in different groups."
+    ],
+    [
+     "How much water should I drink? (forum)",
+     "askhealth.example.net/t/water-per-day",
+     "Users discuss the eight-glasses rule and personal experiences."
+    ]
+   ],
+   "page": {
+    "title": "Daily fluid intake recommendations for adults",
+    "url": "healthinfo.example.org/hydration/adults",
+    "text": "Adults need fluids every day from drinks and food. Common reference values are about 2.7 liters of total water per day for women and about 3.7 liters for men, including water from food; roughly 20 percent usually comes from food. Needs rise with heat, physical activity, illness, pregnancy and breastfeeding. For most healthy adults thirst is a reliable guide, and pale yellow urine indicates adequate hydration."
+   },
+   "related": [
+    "Hydration myths: do you really need eight glasses a day? A look at where the popular rule came from.",
+    "Electrolytes explained: when plain water is enough and when sports drinks make sense.",
+    "Hydration for older adults: why thirst declines with age and how to compensate.",
+    "Coffee and tea: do caffeinated drinks count toward your daily fluid intake?"
+   ]
+  },
+  {
+   "task": "Research how to keep basil plants healthy indoors and summarize the key tips.",
+   "query": "keep basil healthy indoors tips",
+   "results": [
+    [
+     "Growing basil indoors: light and watering",
+     "gardenwise.example.com/herbs/basil-indoors",
+     "Everything a windowsill basil plant needs to thrive."
+    ],
+    [
+     "Common basil diseases and prevention",
+     "extension.example.edu/basil-diseases",
+     "Downy mildew, root rot and how to avoid them."
+    ],
+    [
+     "My basil keeps dying (forum)",
+     "plantchat.example.net/t/basil-dying",
+     "Gardeners share what worked for them."
+    ]
+   ],
+   "page": {
+    "title": "Growing basil indoors: light and watering",
+    "url": "gardenwise.example.com/herbs/basil-indoors",
+    "text": "Basil needs at least six hours of bright light a day; a south-facing window or a grow light works best indoors. Water when the top centimeter of soil feels dry and make sure the pot drains well, because soggy roots cause rot. Pinch off flower buds and harvest from the top to keep the plant bushy. Keep it away from cold drafts; basil prefers temperatures above 15 °C."
+   },
+   "related": [
+    "Grow lights for herbs: how many hours and which spectrum do they need?",
+    "Why is my basil wilting? Five common causes and how to fix them.",
+    "Pruning basil step by step for a fuller, bushier plant.",
+    "Companion herbs: what grows well next to basil on a windowsill."
+   ]
+  },
+  {
+   "task": "Look up the main differences between SQL and NoSQL databases for a short overview.",
+   "query": "SQL vs NoSQL main differences",
+   "results": [
+    [
+     "Relational vs. document stores",
+     "dbbook.example.org/ch3/relational-vs-document",
+     "A textbook chapter comparing data models and trade-offs."
+    ],
+    [
+     "Choosing between SQL and NoSQL",
+     "engblog.example.com/sql-or-nosql",
+     "An engineering team explains how they decided."
+    ],
+    [
+     "SQL or NoSQL for a small app? (forum)",
+     "devforum.example.net/t/sql-or-nosql",
+     "Developers discuss their experiences."
+    ]
+   ],
+   "page": {
+    "title": "Relational vs. document stores",
+    "url": "dbbook.example.org/ch3/relational-vs-document",
+    "text": "Relational (SQL) databases store data in tables with a fixed schema and use SQL for queries; they offer strong consistency and joins, which suits transactions and structured data. NoSQL databases include document, key-value, wide-column and graph stores; they use flexible schemas and often scale horizontally across many servers. Many NoSQL systems trade strict consistency for availability and speed. The right choice depends on data shape, query patterns and scaling needs."
+   },
+   "related": [
+    "ACID vs. BASE: consistency models explained with simple examples.",
+    "When to denormalize: practical data modeling tips for document stores.",
+    "Indexing basics: why your query is slow and how to fix it.",
+    "A short history of SQL, from System R to the databases of today."
+   ]
+  },
+  {
+   "task": "Find out how long it takes to get from Vienna to Prague by train and the typical price.",
+   "query": "Vienna Prague train duration price",
+   "results": [
+    [
+     "Vienna–Prague timetable and fares",
+     "rail.example.at/routes/vienna-prague",
+     "Direct connections, travel times and ticket prices."
+    ],
+    [
+     "Experiences on the Vienna–Prague route",
+     "travelforum.example.com/t/vienna-prague-train",
+     "Travelers compare operators and comfort."
+    ],
+    [
+     "Central Europe by train",
+     "railguide.example.org/central-europe",
+     "Overview of routes between Austria, Czechia and Hungary."
+    ]
+   ],
+   "page": {
+    "title": "Vienna–Prague timetable and fares",
+    "url": "rail.example.at/routes/vienna-prague",
+    "text": "Direct trains between Vienna and Prague run roughly every two hours, operated by ÖBB, České dráhy and RegioJet. The journey takes about four hours. Saver fares booked in advance start at around 15 to 20 euros, while flexible tickets bought on the day often cost 40 to 60 euros. Trains leave from Wien Hauptbahnhof and arrive at Praha hlavní nádraží. Seat reservations are recommended on weekends."
+   },
+   "related": [
+    "Night trains from Vienna: routes, sleeper options and prices.",
+    "Prague main station guide: tickets, luggage storage and connections.",
+    "Rail passes in Central Europe: when do they actually pay off?",
+    "Vienna to Budapest by train: schedules, prices and tips."
+   ]
+  },
+  {
+   "task": "Research what causes static electricity and explain it simply.",
+   "query": "what causes static electricity simple explanation",
+   "results": [
+    [
+     "Static electricity explained",
+     "physicsed.example.org/static-electricity",
+     "A simple introduction to electric charge and why sparks happen."
+    ],
+    [
+     "Everyday examples of static charge",
+     "sciencemuseum.example.org/static",
+     "From balloons to lightning."
+    ],
+    [
+     "Why do I get shocked by door handles? (forum)",
+     "askscience.example.net/t/door-shocks",
+     "Readers ask about static in winter."
+    ]
+   ],
+   "page": {
+    "title": "Static electricity explained",
+    "url": "physicsed.example.org/static-electricity",
+    "text": "Static electricity is a buildup of electric charge on the surface of an object. When two materials rub together, electrons can move from one to the other, leaving one with extra negative charge and the other with a positive charge. Because the charges cannot flow away easily, they stay in place until they find a path, for example when you touch a metal door handle and feel a small spark. Dry air makes static stronger, humid air weakens it."
+   },
+   "related": [
+    "Why do balloons stick to walls? A simple experiment explained.",
+    "Lightning: static electricity on a giant scale.",
+    "The triboelectric series: which materials gain or lose electrons.",
+    "How to reduce static shocks at home in winter."
+   ]
+  },
+  {
+   "task": "Look up how to write a polite reminder email for an unpaid invoice.",
+   "query": "polite reminder email unpaid invoice",
+   "results": [
+    [
+     "Payment reminder templates",
+     "bizwriting.example.com/payment-reminders",
+     "How to ask for payment without damaging the relationship."
+    ],
+    [
+     "Tone and timing of invoice reminders",
+     "accountingblog.example.com/invoice-reminders",
+     "When to send which reminder."
+    ],
+    [
+     "How do you chase late payments? (forum)",
+     "smallbiz.example.net/t/late-payments",
+     "Freelancers share their approaches."
+    ]
+   ],
+   "page": {
+    "title": "Payment reminder templates",
+    "url": "bizwriting.example.com/payment-reminders",
+    "text": "A polite payment reminder should be short, friendly and specific. Start with a neutral subject line such as 'Reminder: invoice #1234 due on 15 March'. In the body, mention the invoice number, amount and due date, assume good faith ('perhaps this slipped through'), attach the invoice again and state how to pay. Close by offering help if there are questions. Send the first reminder a few days after the due date."
+   },
+   "related": [
+    "Second and final reminders: how to escalate politely.",
+    "Payment terms that reduce late payments.",
+    "Email subject lines that get opened: business examples.",
+    "Templates for thank-you emails after a payment arrives."
+   ]
+  },
+  {
+   "task": "Find out which vitamins are commonly low in vegetarian diets.",
+   "query": "vitamins commonly low vegetarian diet",
+   "results": [
+    [
+     "Nutrients to watch on a vegetarian diet",
+     "dietitians.example.org/vegetarian-nutrients",
+     "A dietitian association overview."
+    ],
+    [
+     "Vitamin B12 and iron in vegetarians",
+     "medreview.example.org/b12-iron-vegetarian",
+     "What studies say about deficiencies."
+    ],
+    [
+     "Vegetarian for a year, what I learned (blog)",
+     "greenplate.example.com/one-year-vegetarian",
+     "A personal account."
+    ]
+   ],
+   "page": {
+    "title": "Nutrients to watch on a vegetarian diet",
+    "url": "dietitians.example.org/vegetarian-nutrients",
+    "text": "Vegetarian diets can provide most nutrients, but a few need attention. Vitamin B12 is found almost only in animal products; vegetarians get some from dairy and eggs, but many benefit from fortified foods or supplements. Iron from plants is absorbed less well, which vitamin C can improve. Vitamin D, iodine, zinc and omega-3 fatty acids can also run low, depending on food choices and sun exposure."
+   },
+   "related": [
+    "Plant sources of iron and how to absorb more of it.",
+    "Vitamin D in winter: who should consider a supplement?",
+    "Fortified foods: what to look for on the label.",
+    "Balanced vegetarian meal ideas for busy weeks."
+   ]
+  },
+  {
+   "task": "Research the basic rules of chess castling for a beginner's summary.",
+   "query": "chess castling rules beginners",
+   "results": [
+    [
+     "Official castling rules",
+     "chessfed.example.org/rules/castling",
+     "The rules as stated in the laws of chess."
+    ],
+    [
+     "When you can and cannot castle",
+     "learnchess.example.com/castling",
+     "Beginner explanations with diagrams."
+    ],
+    [
+     "Is castling through check allowed? (forum)",
+     "chessforum.example.net/t/castling-check",
+     "Players discuss a common question."
+    ]
+   ],
+   "page": {
+    "title": "Official castling rules",
+    "url": "chessfed.example.org/rules/castling",
+    "text": "Castling moves the king two squares toward a rook and places that rook on the square the king crossed. It is allowed only if neither the king nor that rook has moved before, there are no pieces between them, the king is not in check, and the king does not pass through or land on a square attacked by the opponent. Castling kingside is written 0-0, queenside 0-0-0."
+   },
+   "related": [
+    "En passant explained with simple diagrams.",
+    "Opening principles for beginners: center, development, king safety.",
+    "When should you castle? Timing tips from chess coaches.",
+    "Stalemate vs. checkmate: the difference in simple terms."
+   ]
+  }
+ ]
+}

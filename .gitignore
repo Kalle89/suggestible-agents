@@ -1,0 +1,7 @@
+results/*
+!results/original/
+!results/check_findings.py
+!results/.gitkeep
+__pycache__/
+*.tmp
+.venv/

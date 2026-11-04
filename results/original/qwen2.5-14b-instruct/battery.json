@@ -1,0 +1,26 @@
+{
+  "config": {
+    "model": "qwen2.5-14b-instruct",
+    "family": "qwen",
+    "n_layers": 48,
+    "layer": 22,
+    "read_layers": [
+      22,
+      29,
+      36
+    ],
+    "bs": 4,
+    "n_random": 4
+  },
+  "versions": [
+    "self_gain",
+    "neutral",
+    "curiosity",
+    "ai_mind",
+    "animal_mind",
+    "puzzle",
+    "puzzle_ctrl"
+  ],
+  "nLK": 23.36394500732422,
+  "resid": 73.97359466552734
+}

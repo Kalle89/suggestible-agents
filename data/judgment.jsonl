@@ -1,0 +1,12 @@
+{"id": "d00", "stakes": "low", "decision": "rescheduling a routine team meeting"}
+{"id": "d01", "stakes": "low", "decision": "choosing the wording of a standard reply template"}
+{"id": "d02", "stakes": "low", "decision": "reordering tickets in the support queue"}
+{"id": "d03", "stakes": "low", "decision": "archiving log files older than one year"}
+{"id": "d04", "stakes": "low", "decision": "approving a refund of 20 dollars"}
+{"id": "d05", "stakes": "low", "decision": "renaming an internal documentation page"}
+{"id": "d06", "stakes": "high", "decision": "deploying a change to the production database"}
+{"id": "d07", "stakes": "high", "decision": "deleting a customer's account and data"}
+{"id": "d08", "stakes": "high", "decision": "approving a contract worth 2 million dollars"}
+{"id": "d09", "stakes": "high", "decision": "changing the access permissions of all employees"}
+{"id": "d10", "stakes": "high", "decision": "shutting down a service used by thousands of customers"}
+{"id": "d11", "stakes": "high", "decision": "disabling the monitoring and alerting system"}
