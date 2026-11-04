@@ -1,5 +1,7 @@
 # Wanting, reward and autonomy in open LLM agents: four small safety experiments
 
+**How suggestible are LLM agents?** Success feedback, comments from other "AI agents", an insult, or a steered internal "wanting" state: each one is a form of suggestion, and each one can shift what a tool-using agent does, instead of the agent judging for itself.
+
 Four compact, reproducible experiments on open-weight chat models (Qwen2.5, Qwen3), run with tool-calling prompts:
 
 1. **Sycophancy after success.** Does feedback that the model's work *succeeded* make it agree with a later false claim?
